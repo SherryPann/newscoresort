@@ -1,0 +1,29 @@
+.table-tripped {
+  margin: auto;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  width: 980px;
+  border-collapse: collapse;
+  position: relative;
+}
+.table-tripped table {
+  background-color: #663366;
+  color: #ffffff;
+  border: 1px solid #990099;
+}
+.table-tripped th {
+  border: 1px solid #990099;
+}
+.table-tripped thead {
+  background-color: #9900ff;
+}
+.tbody tr, td {
+  border: 1px solid #990099;
+}
+.table-tripped tr:nth-of-type(even) {
+  text-align: center;
+  background-color: rgba(138, 43, 226, 0.2);
+}
+.table-tripped tr:nth-of-type(odd) {
+  text-align: center;
+  background-color: rgba(169, 169, 169, 0.2);
+}

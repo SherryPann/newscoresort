@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="main.css">
+  <script src="./jquery/dist/jquery.js"></script>
+</head>
+
+<body>
+  <table class="table-tripped">
+    <thead>
+      <tr>
+        <th data-tag='name' data-flag='1'>Name</th>
+        <th data-tag='math' data-flag='1'>Math</th>
+        <th data-tag='english' data-flag='1'>English</th>
+        <th data-tag='chinese' data-flag='1'>Chinese</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each score}}
+      <tr>
+        <td>{{name}}</td>
+        <td>{{math}}</td>
+        <td>{{english}}</td>
+        <td>{{chinese}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  <script src="sort.js"></script>
+</body>
+
+</html>
