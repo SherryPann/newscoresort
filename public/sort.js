@@ -38,7 +38,7 @@ $(".delete").on("click",function(){
 
   });
 });
-//add fake
+
         $("#btnAdd").on("click",function(){
             var name1=prompt("please input the new name：");
             var math1=prompt("please input the math score：");
@@ -51,6 +51,6 @@ $(".delete").on("click",function(){
             +english1+"</td><td>"+chinese1+"</td>"+" <td class='delete' data-name ={{name}}> Delete</td><tr>";
             $("tbody").append(newRow);
         });
-// add fake
+
 
 })

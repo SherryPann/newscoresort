@@ -3,6 +3,7 @@ var hbs = require("hbs");
 var fs = require("fs");
 var gettable = require("./gettable.js");
 var app = express();
+var app = express();
 app.use(express.static('public'));
 app.use(express.static('bower_components'));
 app.set("view engine", "html");
@@ -21,7 +22,7 @@ function(err,rows){
   if(err) throw err;
    score = gettable(rows);
 
-})
+});
 
 app.get('/', function(req, res) {
   console.log(score);
@@ -30,10 +31,10 @@ app.get('/', function(req, res) {
     });
 });
 
-app.get('/score', function(req, res) {
+app.get('/score',function(req,res) {
   var key = req.query.sortkey;
   var flag = req.query.asc;
-  var arr = score.sort(function(a, b) {
+  var arr = score.sort(function(a,b) {
     return (a[key] - b[key]) * flag;
   });
   res.send(arr);
@@ -55,10 +56,8 @@ app.get("/add",function(req,res){
 
 app.get("/del",function(req,res){
   var sql = "delete from students where student_name=" +'\''+req.query.nm +'\'';
-  console.log(sql);
   connection.query(sql,function(err,rows){
     if(err) throw err;
-    //res.send("deleted");
   });
 });
 
