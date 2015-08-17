@@ -20,17 +20,19 @@
     </thead>
     <tbody>
       {{#each score}}
-      <tr>
+      <tr id={{name}}>
         <td>{{name}}</td>
         <td>{{math}}</td>
         <td>{{english}}</td>
         <td>{{chinese}}</td>
-        <td class='delete' data-name ={{name}}> Delete</td>
+        <td class='delete' data-name={{name}}> Delete</td>
+        <td class='modify' data-name={{name}}> Modify</td>
       </tr>
       {{/each}}
     </tbody>
   </table>
   <button id="btnAdd">Add</button>
+  <button id="search">Search</button>
   <script src="sort.js"></script>
 </body>
 

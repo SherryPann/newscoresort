@@ -2,12 +2,12 @@ function createtable(arr) {
   $("table tbody").empty();
   arr.map(function(val) {
     return $("table tbody").append(
-      "<tr>" + "<td>" + val.name + "</td>" +
+      "<tr id =" + val.name + ">" + "<td>" + val.name + "</td>" +
       "<td>" + val.math + "</td>" +
       "<td>" + val.english + "</td>" +
-      "<td>" + val.chinese + "</td>"+"<td class='delete' data-name ={{name}}> Delete</td>"+"</tr>"
+      "<td>" + val.chinese + "</td>" + "<td class='delete' data-name =" + val.name + "> Delete</td>" + "</tr>"
     )
-  })
+  });
 }
 $(function() {
 
@@ -29,28 +29,58 @@ $(function() {
 
   })
 
-
-$(".delete").on("click",function(){
-
-  var name1 = $(this).data("name");
-  console.log(name1);
-  $.get("/del",{nm:name1},function(resq){
-
+  $("tbody").on("click", ".delete", function() {
+    var name = $(this).data("name");
+    $.ajax({
+      url: '/delete?nm=' + name,
+      type: "DELETE",
+      success: function(msg) {
+        $("tbody #" + name).remove();
+        if(msg.status === 200){
+          alert("deleted successfully!");
+        }
+        else if(msg.status===404){
+          alert(msg.message);
+        }
+      }
+    });
   });
-});
 
-        $("#btnAdd").on("click",function(){
-            var name1=prompt("please input the new name：");
-            var math1=prompt("please input the math score：");
-            var english1=prompt("please input the englsih score：");
-            var chinese1=prompt("please input the chinese score：");
-            $.get("/add",{name2:name1,math:math1,english:english1,chinese:chinese1},function(resq){
 
-            });
-            var newRow="<tr><td>"+name1+"</td><td>"+math1+"</td><td>"
-            +english1+"</td><td>"+chinese1+"</td>"+" <td class='delete' data-name ={{name}}> Delete</td><tr>";
-            $("tbody").append(newRow);
-        });
+  $("#btnAdd").on("click", function() {
+    var name = prompt("please input the new name：");
+    var math = prompt("please input the math score：");
+    var english = prompt("please input the englsih score：");
+    var chinese = prompt("please input the chinese score：");
 
+    $.ajax({
+      url: '/add',
+      type: "POST",
+      data: {
+        name: name,
+        math: math,
+        english: english,
+        chinese: chinese
+      },
+      success: function(msg) {
+        var newRow = "<tr id=" + name + "><td>" + name + "</td><td>" + math + "</td><td>" + english + "</td><td>" + chinese + "</td>" +
+          " <td class='delete' data-name =" + name + "> Delete</td>" + "  <td class='modify' data-name =" + name + "> Modify</td></tr>";
+        $("tbody").append(newRow);
+        if(msg.status===200){
+          alert("addded successfully!");
+        }
+        else if(msg.status===404){
+          alert(msg.message);
+        }
+      }
+    });
+  });
+
+  // $("#search").on("click",function(){
+  //   var name = prompt("please input the name you searched:");
+  //   $.get("/search",{namese:name},function(resq){
+  //     console.log(resq);
+  //   })
+  // })
 
 })

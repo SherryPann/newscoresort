@@ -27,12 +27,21 @@
   text-align: center;
   background-color: rgba(169, 169, 169, 0.2);
 }
-#btnAdd{
-    border: 2px solid #9900ff;
+#btnAdd {
+  border: 2px solid #9900ff;
   background: #eee;
-  width:100px;
-  height:30px;
+  width: 100px;
+  height: 30px;
   position: relative;
-  top:10px;
- left: 1000px;
+  top: 10px;
+  left: 1000px;
+}
+#search {
+  border: 2px solid #9900ff;
+  background: #eee;
+  width: 100px;
+  height: 30px;
+  position: relative;
+  top: 10px;
+  left: 800px;
 }
